@@ -1,0 +1,18 @@
+services:
+  xfdev:
+    build: xfdev
+    hostname: xfdev
+    restart: unless-stopped
+    ports:
+      - "7080:80"
+      - "7443:443"
+      - "7022:22"
+      - "7083:9000"
+    volumes:
+      - html:/var/www/html
+      - mysql:/var/lib/mysql
+      - .:/var/www/dev/
+
+volumes:
+  html:
+  mysql:

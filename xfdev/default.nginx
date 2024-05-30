@@ -1,0 +1,32 @@
+# Default server configuration
+#
+server {
+	listen 80 default_server;
+	listen [::]:80 default_server;
+
+	root /var/www/html;
+
+	# Add index.php to the list if you are using PHP
+	index index.php;
+
+	server_name _;
+
+	client_max_body_size 1084m;
+
+	location / {
+
+		# we are using friendly names, so rewrite the URL with index.php
+		try_files $uri $uri/ /index.php?$uri&$args;
+		index index.php;
+	}
+
+	# pass PHP scripts to FastCGI server
+	#
+	location ~ \.php$ {
+		include snippets/fastcgi-php.conf;
+		#fastcgi_pass unix:/var/run/php/php8.3-fpm.sock;
+		fastcgi_pass 127.0.0.1:9000;
+
+	}
+
+}
