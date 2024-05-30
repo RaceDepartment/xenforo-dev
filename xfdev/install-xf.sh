@@ -16,5 +16,5 @@ php cmd.php xf:install \
     --password=overtake \
     --email=admin@localhost.com \
     --title=XenForo \
-    --url=http://127.0.0.1:7020
+    --url=http://127.0.0.1:7080
 
